@@ -3,14 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InvoiceFormComponent } from './components/invoice-form/invoice-form.component';
+import { InvoiceDisplayComponent } from './components/invoice-display/invoice-display.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InvoiceFormComponent,
+    InvoiceDisplayComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
