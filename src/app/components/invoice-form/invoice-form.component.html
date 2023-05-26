@@ -1,67 +1,105 @@
 <div class="container">
-  <h3>Trip Information</h3>
-  <label for="passenger" class="form-label">Service Type</label>
-  <input id="passenger" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
+  <form [formGroup]="invoiceForm">
 
-  <label for="passenger" class="form-label">Passenger</label>
-  <input id="passenger" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
+    <h3>Billing Information</h3>
+
+    <div class="d-flex flex-row justify-content-between">
+      <div class="flex flex-column form-floating">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="billingContactName" formControlName="billingContactName" placeholder="Billing Contact Name">
+          <label for="billingContactName">Billing Contact Name</label>
+        </div>
+      </div>
+
+      <div class="flex flex-column form-floating">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="billingContactPhone" formControlName="billingContactPhone" placeholder="Billing Contact Phone">
+          <label for="billingContactPhone">Billing Contact Phone</label>
+        </div>
+      </div>
+
+      <div class="flex flex-column form-floating">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="invoiceNumber" formControlName="invoiceNumber" placeholder="Invoice Number">
+          <label for="invoiceNumber">Invoice Number</label>
+        </div>
+      </div>
+
+      <div class="flex flex-column form-floating">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="paymentMethod" formControlName="paymentMethod" placeholder="Payment Method">
+          <label for="paymentMethod">Payment Method</label>
+        </div>
+      </div>
+    </div>
+
+    <h3>Trip Information</h3>
+
+    <div class="d-flex flex-row justify-content-between">
+      <div class="flex flex-column form-floating">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="serviceType" formControlName="serviceType" placeholder="Service Type">
+          <label for="serviceType">Service Type</label>
+        </div>
+      </div>
+
+      <div class="flex flex-column form-floating">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="passengerName" formControlName="passengerName" placeholder="Passenger Name">
+          <label for="passengerName">Passenger Name</label>
+        </div>
+      </div>
+
+      <div class="flex flex-column form-floating">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="passengerPhone" formControlName="passengerPhone" placeholder="Passenger Phone">
+          <label for="passengerPhone">Passenger Phone</label>
+        </div>
+      </div>
+
+      <div class="flex flex-column form-floating">
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="numberOfPassengers" formControlName="numberOfPassengers" placeholder="Number of Passengers">
+          <label for="numberOfPassengers">Number of Passengers</label>
+        </div>
+      </div>
+    </div>
 
 
-  <label for="passenger" class="form-label">Phone Number</label>
-  <input id="passenger" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
+    <h3>Trip Routing Information</h3>
 
-  <label for="passenger" class="form-label">Number of Passengers</label>
-  <input id="passenger" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
+    <div class="d-flex flex-column">
+      <!-- Pickup -->
+      <div class="d-flex flex-row justify-content-between align-items-center">
 
-  <label for="passenger" class="form-label">Vehicle Type</label>
-  <input id="passenger" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="pickupLocation" formControlName="pickupLocation" placeholder="Pick up Location">
+          <label for="pickupLocation">Pick up Location</label>
+        </div>
 
+        <div class="form-floating">
+          <div class="input-group">
+            <input type="text" id="pickupDate" class="form-control" placeholder="Pick Up Date" aria-label="Recipient's username" aria-describedby="pickupDate"  class="form-control" placeholder="Pick Up Date" aria-label="Recipient's username" aria-describedby="pickupDate" ngbDatepicker #d="ngbDatepicker">
+            <button class="btn btn-outline-secondary" type="button" id="pickupDate" (click)="d.toggle()">Select</button>
+          </div>
+        </div>
+        <ngb-timepicker [ngModelOptions]="{standalone: true}" id="pickupTime" [(ngModel)]="pickUpTime" [meridian]="true"></ngb-timepicker>
+      </div>
 
-  <h3>Billing Information</h3>
-  <label for="passenger" class="form-label">Primary Billing Contact</label>
-  <input id="passenger" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
+      <!-- Drop off -->
+      <div class="d-flex flex-row align-items-center">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="dropoffLocation" formControlName="dropoffLocation" placeholder="Drop off Location">
+          <label for="dropoffLocation">Drop off Location</label>
+        </div>
 
-  <label for="passenger" class="form-label">Payment Method</label>
-  <input id="passenger" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
-
-
-  <h3>Trip Routing Information</h3>
-
-  <label for="passenger" class="form-label">Pick up Location</label>
-  <input id="passenger" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
-
-
-  <label for="passenger" class="form-label">Pick up time</label>
-  <input id="passenger" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
-
-
-
-  <label for="passenger" class="form-label">Drop Off Location</label>
-  <input id="passenger" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
-
-  <label for="passenger" class="form-label">Drop off Location</label>
-  <input id="passenger" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
+        <!-- <ngb-timepicker  [ngModelOptions]="{standalone: true}" id="dropOffTime" [(ngModel)]="dropOffTime" formControlName="dropOffTime" [(ngModel)]="dropOffTime" [meridian]="true"></ngb-timepicker> -->
+      </div>
+    </div>
 
 
 
-  Charges & Fees
-
-  Flat rate
-
-  Pick-up Date: 05/18/2023 - Thursday
-  Pick-up Time: 11:00 AM
-  ServiceType: Airport
-  Passenger: Sarah Synder
-  Client Ref#:
-  Phone Number:
-  No. of Pass: 1
-  Vehicle Type: SUV
-  Primary/Billing Contact: ACE
-  Payment Method: Check
-
-
-  <div>
-
-  </div>
-
+  </form>
 </div>
+
+
