@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Form, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -26,6 +26,27 @@ export class InvoiceFormComponent implements OnInit {
       pickupDate: new FormControl(''),
       pickupTime: new FormControl(''),
       dropoffLocation: new FormControl(''),
+      billItemsArray: new FormArray([]),
     })
+
+    this.addBillItem();
   }
+
+  get billItemsArray(): FormArray {
+    return this.invoiceForm.controls['billItemsArray'] as FormArray;
+  }
+
+  addBillItem() {
+    this.billItemsArray.push(
+      this.fb.group({
+        description: new FormControl(''),
+        cost: new FormControl('')
+      })
+    )
+  }
+
+  removeBillItem(indexOfBillToRemove:number) {
+    this.billItemsArray.removeAt(indexOfBillToRemove);
+  }
+
 }
