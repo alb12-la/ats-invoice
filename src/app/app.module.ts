@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbDatepickerModule, NgbModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbModalModule, NgbModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { InvoiceFormComponent } from './components/invoice-form/invoice-form.component';
 import { InvoiceDisplayComponent } from './components/invoice-display/invoice-display.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     NgbTimepickerModule,
     NgbDatepickerModule,
-    NgbModule
+    NgbModule,
+    NgbModalModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

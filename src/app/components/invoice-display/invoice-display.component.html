@@ -1,6 +1,6 @@
-<div class="container mt-4">
+<div class="container mt-5">
   <div class="d-flex flex-row justify-content-between align-items-center mb-5">
-    <img width="150px" src="../../../assets/images/logo.svg">
+    <img width="150px" src="../../../assets/images/logo.png">
     <h1>Invoice</h1>
   </div>
 
@@ -16,8 +16,8 @@
     <!-- Bill to -->
     <div class="max-w-200">
       <strong>Bill To</strong>
-      <div>Alberto's Transportation Service</div>
-      <div>1538 Elwood Ave Pomona CA 91768</div>
+      <div>{{invoiceContents.billingContactName}}</div>
+      <div>{{invoiceContents.billingContactPhone}}</div>
     </div>
   </div>
 
@@ -26,23 +26,28 @@
     <table class="table-sm borderless">
       <tbody>
         <tr>
-          <th>Pick-up Date</th>
-          <td>11/21/2002</td>
+          <th>Pick-up Date:</th>
+          <td>{{invoiceContents.pickupDate}}</td>
         </tr>
 
         <tr>
-          <th>Pick-up Time</th>
-          <td>12:22pm</td>
+          <th>Pick-up Time:</th>
+          <td>{{invoiceContents.pickupTime}}</td>
         </tr>
 
         <tr>
-          <th>Passenger</th>
-          <td>Sarrah S</td>
+          <th>Passenger:</th>
+          <td>{{invoiceContents.passengerName}}</td>
         </tr>
 
         <tr>
-          <th>Phone number</th>
-          <td>626-348-4251</td>
+          <th>No. of Passengers:</th>
+          <td>{{invoiceContents.numberOfPassengers}}</td>
+        </tr>
+
+        <tr>
+          <th>Phone number:</th>
+          <td>{{invoiceContents.passengerPhone}}</td>
         </tr>
       </tbody>
     </table>
@@ -52,22 +57,22 @@
       <tbody>
         <tr>
           <th>Invoice #</th>
-          <td>ACE-0001</td>
+          <td>{{invoiceContents.invoiceNumber}}</td>
         </tr>
         <tr>
-          <th>Vehicle Type</th>
+          <th>Vehicle Type:</th>
           <td>SUV</td>
         </tr>
 
 
         <tr>
-          <th>Service Type</th>
-          <td>Airport</td>
+          <th>Service Type:</th>
+          <td>{{invoiceContents.serviceType}}</td>
         </tr>
 
         <tr>
-          <th>Payment Method</th>
-          <td>Check</td>
+          <th>Payment Method:</th>
+          <td>{{invoiceContents.paymentMethod}}</td>
         </tr>
       </tbody>
     </table>
@@ -78,12 +83,12 @@
     <table class="table-sm borderless">
       <tbody>
         <tr>
-          <th>Pickup</th>
-          <td>LAX International Airport</td>
+          <th>Pickup:</th>
+          <td>{{invoiceContents.pickupLocation}}</td>
         </tr>
         <tr>
-          <th>Drop Off</th>
-          <td>1538 Elwood Ave pomona ca</td>
+          <th>Drop Off:</th>
+          <td>{{invoiceContents.dropoffLocation}}</td>
         </tr>
       </tbody>
     </table>
@@ -101,14 +106,12 @@
     </thead>
 
     <tbody>
-      <tr>
-        <td>Flat Rate</td>
-        <td>$170.00</td>
-      </tr>
-      <tr>
-        <td>Parking Fee</td>
-        <td>$23</td>
-      </tr>
+      <ng-container *ngFor="let item of this.invoiceContents.billingItems">
+        <tr>
+          <td class="text-capitalize">{{item.description}}</td>
+          <td>${{item.cost}}</td>
+        </tr>
+      </ng-container>
     </tbody>
 
   </table>
@@ -118,7 +121,7 @@
       <thead>
         <tr>
           <th>Total Due</th>
-          <th>$209.00</th>
+          <th>${{invoiceContents.totalCost}}</th>
         </tr>
       </thead>
     </table>

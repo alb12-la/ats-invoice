@@ -70,7 +70,7 @@
 
         <div class="input-group unset-width col m-2">
           <div class="form-floating">
-            <input type="text" class="form-control" id="pickupDate" placeholder="Pick up Date" type="text" ngbDatepicker #d="ngbDatepicker">
+            <input type="text" class="form-control" id="pickupDate" [ngModelOptions]="{standalone: true}"  [(ngModel)]="pickUpDate" placeholder="Pick up Date" type="text" ngbDatepicker #d="ngbDatepicker">
             <label for="pickupDate">Pick up Date</label>
           </div>
           <span (click)="d.toggle()" class="input-group-text">
@@ -115,7 +115,7 @@
     <button type="button" (click)="addBillItem()" class="btn btn-primary m-2">Add Item</button>
 
     <div class="d-flex flex-row justify-content-end">
-      <button class="btn btn-warning btn-lg">Export PDF</button>
+      <button class="btn btn-warning btn-lg"(click)="exportToPdf()">Export PDF</button>
     </div>
 
 

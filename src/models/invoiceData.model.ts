@@ -42,7 +42,22 @@ export class InvoiceModel {
     this.vehicleType = 'SUV'
   }
 }
-
+export interface InvoiceContents {
+  billingContactName: string;
+  billingContactPhone: string;
+  invoiceNumber: string;
+  paymentMethod: string;
+  serviceType: string;
+  passengerName: string;
+  passengerPhone: string;
+  numberOfPassengers: number;
+  pickupLocation: string;
+  pickupDate: string;
+  pickupTime: string;
+  dropoffLocation: string;
+  billingItems:BillItem[];
+  totalCost: number;
+}
 
 export interface BillItem {
   description: string,

@@ -1,4 +1,19 @@
+<app-invoice-form (finishedForm)="formToDisplay($event, modalContent)"></app-invoice-form>
 
-<app-invoice-form></app-invoice-form>
+<ng-template #modalContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Download Invoice</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-invoice-display id="invoice-display" [invoiceContents]="invoiceContents"></app-invoice-display>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="download()">Download PDF</button>
+  </div>
+</ng-template>
+
+
 
 <router-outlet></router-outlet>
