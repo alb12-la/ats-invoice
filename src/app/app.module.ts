@@ -7,12 +7,14 @@ import { NgbDatepickerModule, NgbModalModule, NgbModule, NgbTimepickerModule } f
 import { InvoiceFormComponent } from './components/invoice-form/invoice-form.component';
 import { InvoiceDisplayComponent } from './components/invoice-display/invoice-display.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvoiceFormComponent,
-    InvoiceDisplayComponent
+    InvoiceDisplayComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

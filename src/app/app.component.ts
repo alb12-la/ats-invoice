@@ -15,6 +15,7 @@ import { BillItem, InvoiceContents } from 'src/models/invoiceData.model';
 })
 export class AppComponent {
   constructor(private modalService: NgbModal) { }
+  display = false;
 
   invoiceContents: InvoiceContents;
 
