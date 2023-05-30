@@ -8,6 +8,7 @@ import { InvoiceFormComponent } from './components/invoice-form/invoice-form.com
 import { InvoiceDisplayComponent } from './components/invoice-display/invoice-display.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { LoginComponent } from './components/login/login.component';
     NgbModule,
     NgbModalModule,
   ],
-  providers: [],
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '/ats-invoice' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
