@@ -69,7 +69,7 @@ export class InvoiceFormComponent implements OnInit {
 
 
   convertDateStructToString(obj: any): string {
-    return `${obj.day}/${obj.month}/${obj.year}`
+    return `${obj.month}/${obj.day}/${obj.year}`
   }
 
 
