@@ -27,6 +27,31 @@
       </div>
     </div>
 
+    <!-- Driver information -->
+
+    <div class="d-flex flex-row align-items-center mt-3 mb-2">
+      <h3 class="">Driver Information</h3>
+
+      <div class="form-check form-switch mx-3">
+        {{displayDriverForm}}
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" (click)="onDriverFormToggle()" [checked]="displayDriverForm" >
+      </div>
+    </div>
+
+    <div  *ngIf="displayDriverForm" class="d-flex flex-row justify-content-between">
+      <div class="d-flex flex-row col">
+        <div class="form-floating m-2 col">
+          <input type="text" class="form-control" id="serviceType" formControlName="serviceType" placeholder="Service Type">
+          <label for="serviceType">Driver Name</label>
+        </div>
+
+        <div class="form-floating m-2 col">
+          <input type="text" class="form-control" id="passengerName" formControlName="passengerName" placeholder="Passenger Name">
+          <label for="passengerName">Driver Phone</label>
+        </div>
+      </div>
+    </div>
+
 
     <h3 class="mt-3 mb-2">Trip Information</h3>
     <div class="d-flex flex-row justify-content-between">

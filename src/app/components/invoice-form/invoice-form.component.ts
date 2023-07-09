@@ -15,6 +15,7 @@ export class InvoiceFormComponent implements OnInit {
   pickUpDate = {};
   dropOffTime = {};
   showModal = false;
+  displayDriverForm = false;
   ngOnInit(): void {
     this.invoiceForm = this.fb.group({
       billingContactName: new FormControl(''),
@@ -46,6 +47,15 @@ export class InvoiceFormComponent implements OnInit {
         cost: new FormControl('')
       })
     )
+  }
+
+  onDriverFormToggle(){
+    this.displayDriverForm = !this.displayDriverForm;
+    if ( this.displayDriverForm){
+      // add controls to form
+    } else {
+      // remove those controls if they already exist.
+    }
   }
 
   removeBillItem(indexOfBillToRemove: number) {
