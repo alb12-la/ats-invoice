@@ -51,10 +51,15 @@ export class InvoiceFormComponent implements OnInit {
 
   onDriverFormToggle(){
     this.displayDriverForm = !this.displayDriverForm;
-    if ( this.displayDriverForm){
-      // add controls to form
+
+    if ( this.displayDriverForm ){
+      // Add the controls
+      this.invoiceForm.addControl('driverName', new FormControl(''));
+      this.invoiceForm.addControl('driverNumber', new FormControl(''));
     } else {
-      // remove those controls if they already exist.
+      // Remove the controls
+      this.invoiceForm.removeControl('driverName');
+      this.invoiceForm.removeControl('driverNumber');
     }
   }
 

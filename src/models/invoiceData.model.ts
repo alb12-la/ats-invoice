@@ -1,4 +1,6 @@
 export class InvoiceModel {
+  driverName:string;
+  driverNumber:string;
   billingContactName: string;
   billingContactPhone: string;
   invoiceNumber: string;
@@ -14,6 +16,8 @@ export class InvoiceModel {
   vehicleType: string;
 
   constructor(
+    driverName:string,
+    driverNumber:string,
     billingContactName: string,
     billingContactPhone: string,
     invoiceNumber: string,
@@ -27,6 +31,8 @@ export class InvoiceModel {
     pickupTime: string,
     dropoffLocation: string,
   ) {
+    this.driverName = driverName;
+    this.driverNumber = driverNumber
     this.billingContactName = billingContactName;
     this.billingContactPhone = billingContactPhone;
     this.invoiceNumber = invoiceNumber;
@@ -43,6 +49,8 @@ export class InvoiceModel {
   }
 }
 export interface InvoiceContents {
+  driverName:string
+  driverNumber:string;
   billingContactName: string;
   billingContactPhone: string;
   invoiceNumber: string;

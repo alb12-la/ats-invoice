@@ -49,6 +49,11 @@
           <th>Phone number:</th>
           <td>{{invoiceContents.passengerPhone}}</td>
         </tr>
+
+        <tr *ngIf="invoiceContents.driverName">
+          <th>Driver:</th>
+          <td>{{invoiceContents.driverName}}<span *ngIf="invoiceContents.driverNumber" class="ml-1"> - {{invoiceContents.driverNumber}}</span></td>
+        </tr>
       </tbody>
     </table>
 

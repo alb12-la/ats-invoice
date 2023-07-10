@@ -21,6 +21,8 @@ export class AppComponent {
 
   formToDisplay(formGroup: FormGroup, modalContent: any) {
     this.invoiceContents = {
+      driverName:'',
+      driverNumber:'',
       billingContactName: formGroup.get('billingContactName')?.value || '',
       billingContactPhone: '',
       invoiceNumber: '',
@@ -38,6 +40,8 @@ export class AppComponent {
     }
 
     // Get Values
+    this.invoiceContents.driverName = formGroup.get('driverName')?.value;
+    this.invoiceContents.driverNumber = formGroup.get('driverNumber')?.value;
     this.invoiceContents.billingContactName = formGroup.get('billingContactName')?.value;
     this.invoiceContents.billingContactPhone = formGroup.controls['billingContactPhone'].value;
     this.invoiceContents.invoiceNumber = formGroup.controls['invoiceNumber'].value;
