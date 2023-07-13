@@ -16,6 +16,8 @@ export class InvoiceFormComponent implements OnInit {
   dropOffTime = {};
   showModal = false;
   displayDriverForm = false;
+  displayMoreBillingOptions = false;
+  hasDiscount = false;
   ngOnInit(): void {
     this.invoiceForm = this.fb.group({
       billingContactName: new FormControl(''),
@@ -40,6 +42,10 @@ export class InvoiceFormComponent implements OnInit {
     return this.invoiceForm.controls['billItemsArray'] as FormArray;
   }
 
+  toggleMoreBillingOptions(){
+    this.displayMoreBillingOptions = !this.displayMoreBillingOptions;
+  }
+
   addBillItem() {
     this.billItemsArray.push(
       this.fb.group({
@@ -48,6 +54,19 @@ export class InvoiceFormComponent implements OnInit {
       })
     )
   }
+
+  addDiscount() {
+    this.hasDiscount = true;
+    this.billItemsArray.push(
+      this.fb.group(
+        {
+          description: new FormControl('Discount'),
+          discount: new FormControl('')
+        }
+      )
+    )
+  }
+
 
   onDriverFormToggle(){
     this.displayDriverForm = !this.displayDriverForm;
@@ -64,6 +83,12 @@ export class InvoiceFormComponent implements OnInit {
   }
 
   removeBillItem(indexOfBillToRemove: number) {
+    // Detect if we're deleting a discount
+    if (this.billItemsArray.controls[indexOfBillToRemove].get('discount')){
+      this.hasDiscount = false
+    }
+
+
     this.billItemsArray.removeAt(indexOfBillToRemove);
   }
 

@@ -69,5 +69,6 @@ export interface InvoiceContents {
 
 export interface BillItem {
   description: string,
-  cost: number
+  cost?: number,
+  discount?:number
 }

@@ -114,7 +114,8 @@
       <ng-container *ngFor="let item of this.invoiceContents.billingItems">
         <tr>
           <td class="text-capitalize">{{item.description}}</td>
-          <td>${{item.cost}}</td>
+          <td *ngIf="item?.cost">${{item.cost}}</td>
+          <td *ngIf="item?.discount">{{item.discount}}%</td>
         </tr>
       </ng-container>
     </tbody>

@@ -21,8 +21,8 @@ export class AppComponent {
 
   formToDisplay(formGroup: FormGroup, modalContent: any) {
     this.invoiceContents = {
-      driverName:'',
-      driverNumber:'',
+      driverName: '',
+      driverNumber: '',
       billingContactName: formGroup.get('billingContactName')?.value || '',
       billingContactPhone: '',
       invoiceNumber: '',
@@ -36,7 +36,7 @@ export class AppComponent {
       pickupTime: '',
       dropoffLocation: '',
       totalCost: 0,
-      billingItems: []
+      billingItems: [],
     }
 
     // Get Values
@@ -58,11 +58,16 @@ export class AppComponent {
     // Calculate total
     const billingItemsFormArray = formGroup.controls['billItemsArray'] as FormArray;
     const billingItems: BillItem[] = billingItemsFormArray.value;
-    const billingSum = billingItems.reduce((a, b) => a + b.cost, 0);
-    this.invoiceContents.totalCost = billingSum;
+    // Add up all the costs
+    const billingSum = billingItems.filter((item) => item.cost).reduce((a, b) => a + b.cost, 0);
+    // Remove discounts
+    const discount = billingItems.filter((item) => item.discount).reduce((a, b) => a + b.discount, 0);
+    let totalDiscount = (discount / 100) * billingSum
+    const totalCost = billingSum - totalDiscount
 
+
+    this.invoiceContents.totalCost = totalCost;
     this.invoiceContents.billingItems = billingItems;
-
     this.modalService.open(modalContent, { fullscreen: true })
   }
 

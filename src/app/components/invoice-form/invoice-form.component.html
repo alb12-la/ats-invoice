@@ -118,9 +118,29 @@
       </div>
     </div>
 
-    <h3 class="mt-3 mb-2">Billable Items</h3>
+
+
+    <div class="d-flex flex-row align-items-center mt-3 mb-2">
+      <h3 >Billable Items</h3>
+
+      <div class="form-check form-switch mx-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="more-billable-items" (click)="toggleMoreBillingOptions()" [checked]="displayDriverForm">
+        <label class="form-check-label" for="more-billable-items">More</label>
+
+      </div>
+    </div>
+
+    <!-- More Billing Options -->
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="!displayMoreBillingOptions" class="m-2 pb-2 border-bottom">
+      <div class="card">
+        <div class="card-body">
+          <button type="button" [disabled]="hasDiscount" class="btn btn-warning" (click)="addDiscount()">Add discount</button>
+        </div>
+      </div>
+    </div>
+
     <ng-container *ngFor="let fg of billItemsArray.controls; let i = index">
-      <form [formGroup]="fg" class="">
+      <form *ngIf="fg.get('cost') else discount" [formGroup]="fg" class="">
         <div class="d-flex flex-row ">
           <!-- Description -->
           <div class="form-floating m-2 col">
@@ -137,6 +157,28 @@
 
         </div>
       </form>
+
+      <ng-template #discount>
+        <form [formGroup]="fg" class="">
+          <div class="d-flex flex-row ">
+            <!-- Description -->
+            <div class="form-floating m-2 col">
+              <input type="text" class="form-control" [id]="'billing-item-description-' +1" formControlName="description" placeholder="Item Description">
+              <label [for]="'billing-item-description-' +1">Description</label>
+            </div>
+            <!-- Cost -->
+            <div class="form-floating m-2 col">
+              <input type="number" class="form-control" [id]="'discount-' +1" formControlName="discount" placeholder="Discount Percent">
+              <label [for]="'discount-' +1">Discount Percent</label>
+            </div>
+            <!-- Remove -->
+            <button type="button" (click)="removeBillItem(i)" class="btn btn-outline-danger m-2"> <i class="bi bi-x"></i> Remove</button>
+
+          </div>
+        </form>
+      </ng-template>
+
+
     </ng-container>
     <button type="button" (click)="addBillItem()" class="btn btn-primary m-2">Add Item</button>
 
