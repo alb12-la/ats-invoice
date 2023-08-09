@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { InvoiceContents } from 'src/models/invoiceData.model';
+import { environment } from 'src/environments/environment'
 
 @Component({
   selector: 'app-invoice-display',
@@ -8,6 +9,7 @@ import { InvoiceContents } from 'src/models/invoiceData.model';
 })
 export class InvoiceDisplayComponent implements OnInit {
   @Input() invoiceContents: InvoiceContents;
+  assetPath = environment.assetPath
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
